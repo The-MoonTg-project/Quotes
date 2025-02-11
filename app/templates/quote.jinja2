@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Quote</title>
+    </head>
+    <body>
+        <div class="container">
+            {% for message in messages %}
+                {% if loop.index > 1 and messages[loop.index0 - 1].author.id != message.author.id %}
+                    </div></div>
+                {% endif %}
+                {% if loop.first or messages[loop.index0 - 1].author.id != message.author.id %}
+                    <div class="message-container">
+                        <div class="avatar-container">
+                            {% if message.author.avatar %}
+                                <img src="data:image/png;base64, {{ message.author.avatar }}" class="quote-avatar">
+                            {% else %}
+                                <div class="quote-avatar" style="background: {{ get_nick_color(message.author.id) }};">
+                                    <span class="avatar-initials">{{ message.author.name[0] }}</span>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="quote-bar">
+                            <div class="quote" style="background: {{ quote_color }}; color: {{ text_color }};">
+                                <div class="quote-inner">
+                                    <div class="quote-header">
+                                        <span class="quote-name" style="color: {{ get_nick_color(message.author.id) }};">
+                                            {{ message.author.name | safe }}
+                                            {% if message.author.via_bot %}
+                                                <span style="color: white;"> via @{{ message.author.via_bot}}</span>
+                                            {% endif %}
+                                        </span>
+                                        {% if message.author.rank %}
+                                            <span class="quote-rank">{{ message.author.rank }}</span>
+                                        {% endif %}
+                                    </div>
+                                    {% if message.reply %}
+                                        <div class="reply" style="border-left: 8px solid {{ text_color }};">
+                                            <span class="reply-name" style="color: {{ get_nick_color(message.reply.id) }};">{{ message.reply.name | safe }}</span>
+                                            <span class="reply-text">{{ message.reply.text | safe }}</span>
+                                        </div>
+                                    {% endif %}
+                                    {% if message.media %}
+                                        <img class="media-img" src="data:image/png;base64, {{ message.media }}">
+                                    {% endif %}
+                                    <span class="quote-text">{{ message.text | safe }}</span>
+                                </div>
+                            </div>
+                {% else %}
+                    <div class="quote" style="background: {{ quote_color }}; color: {{ text_color }};">
+                        <div class="quote-inner">
+                            {% if message.reply %}
+                                <div class="reply" style="border-left: 8px solid {{ text_color }};">
+                                    <span class="reply-name" style="color: {{ get_nick_color(message.reply.id) }};">{{ message.reply.name | safe }}</span>
+                                    <span class="reply-text">{{ message.reply.text | safe }}</span>
+                                </div>
+                            {% endif %}
+                            {% if message.media %}
+                                <img class="media-img" src="data:image/png;base64, {{ message.media }}">
+                            {% endif %}
+                            <span class="quote-text">{{ message.text | safe }}</span>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            </div></div>
+        </div>
+    </body>
+</html>

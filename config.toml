@@ -1,0 +1,11 @@
+[settings]
+    [settings.quote]
+    quality = 85
+    text_color = "white"
+    background_color = "#162330"
+
+    [settings.logging]
+    level = "INFO"
+
+    [settings.server]
+    port = 1337

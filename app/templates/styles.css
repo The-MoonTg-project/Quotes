@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
+@font-face {
+    font-family: "Noto Color Emoji";
+    src: url("https://github.com/googlefonts/noto-emoji/raw/main/fonts/NotoColorEmoji.ttf");
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+html {
+    width: max-content;
+}
+
+a {
+    color: #6ab8eb;
+    text-decoration: none;
+}
+
+b {
+    font-weight: 700;
+}
+
+code {
+    font-family: "Roboto Mono", monospace;
+    font-weight: 400;
+    color: #5887a7;
+}
+
+i {
+    font-style: italic;
+    font-weight: 400;
+}
+
+.container,
+.quote-bar,
+.quote-inner,
+.reply {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1792px;
+}
+
+.quote-bar {
+    margin-left: 30px;
+}
+
+.reply {
+    max-width: 1408px;
+    padding-left: 28px;
+    margin: 18px 0;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+.message-container:last-child {
+    margin-bottom: 0;
+}
+
+.avatar-initials,
+.quote-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quote-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    color: white;
+    text-transform: uppercase;
+    font-size: 80px;
+    font-weight: 700;
+}
+
+.quote-header {
+    display: -webkit-grid;
+    display: grid;
+    -webkit-grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto;
+}
+
+.quote {
+    display: table;
+    word-break: break-word;
+    border-radius: 64px;
+    padding: 28px 36px;
+    width: auto;
+    max-width: 100%;
+    margin-bottom: 15px;
+}
+
+.quote:last-child {
+    margin-bottom: 0;
+}
+
+.quote-name,
+.quote-rank,
+.reply-name,
+.reply-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.quote-name,
+.quote-rank {
+    font-size: 64px;
+    font-weight: 500;
+}
+
+.quote-rank {
+    color: #969ba0;
+    margin-left: 30px;
+}
+
+.quote-text {
+    font-size: 64px;
+    font-weight: 400;
+}
+
+.reply-name {
+    font-size: 48px;
+    font-weight: 500;
+}
+
+.reply-text {
+    font-size: 48px;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.media-img {
+    margin-top: 36px;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 16px;
+}
+
+.avatar-container {
+    display: flex;
+    margin-top: auto;
+}
