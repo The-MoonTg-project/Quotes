@@ -1,6 +1,4 @@
 <p align="center">
-    <img src="docs/source/_static/logo_light.svg">
-    <br>
     <b>Quotes API</b>: Quote Image Generator
 </p>
 
