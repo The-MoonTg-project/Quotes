@@ -20,18 +20,6 @@ cd Quotes
 poetry install
 </pre>
 
-Additionally, ensure <code>wkhtmltopdf</code> version 0.12.5 is installed on your system:
-
-Download the appropriate package for your distribution from the wkhtmltopdf releases page
-
-Install it using your package manager. For example, on Ubuntu:
-
-<pre lang="bash">
-sudo apt-get install -y wkhtmltopdf=0.12.5
-</pre>
-
-> Note: If the specific version is not available in your package manager, you may need to download the binary directly and follow the installation instructions provided in the release notes
-
 
 <h1>Usage</h1>
 
