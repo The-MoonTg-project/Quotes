@@ -8,4 +8,4 @@
     level = "INFO"
 
     [settings.server]
-    port = 10000
+    port = 1337
