@@ -1,8 +1,9 @@
 """API endpoint for generating quote images"""
 
 import io
-import imgkit
+import math
 
+import plutoprint
 from PIL import Image
 
 from fastapi.responses import Response
@@ -16,20 +17,20 @@ from app.quotes.generate import generate_messages
 async def quote_generate(form: Messages):
     """Generates a WEBP image from the provided quote message data"""
 
-    result = imgkit.from_string(
-        string=generate_messages(form),
-        output_path=None,
-        options={
-            "format": "png",
-            "transparent": "",
-            "enable-local-file-access": "",
-            "quiet": "",
-            "width": 1792
-        },
-        css=config.defaults.templates_path / "styles.css"
-    )
+    css_path = config.defaults.templates_path / "styles.css"
+    user_style = css_path.read_text(encoding="utf-8")
 
-    original_image = Image.open(io.BytesIO(result))
+    book = plutoprint.Book(media=plutoprint.MEDIA_TYPE_SCREEN)
+    book.load_html(generate_messages(form), user_style=user_style)
+
+    width = min(math.ceil(book.get_document_width()), 1792)
+    height = math.ceil(book.get_document_height())
+
+    png_buffer = io.BytesIO()
+    book.write_to_png_stream(png_buffer, width=width, height=height)
+    png_buffer.seek(0)
+
+    original_image = Image.open(png_buffer)
     cropped_image = original_image.crop(original_image.getbbox())
 
     webp_output = io.BytesIO()
